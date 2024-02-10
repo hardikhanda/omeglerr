@@ -1,0 +1,27 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Notification Example</title>
+</head>
+<body>
+    <h1>Socket.IO Notification Example</h1>
+    <button onclick="sendNotification()">Send Notification</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        function sendNotification() {
+            const notification = 'New notification!';
+            socket.emit('sendNotification', notification);
+        }
+
+        socket.on('receiveNotification', (data) => {
+            alert(data);
+        });
+    </script>
+</body>
+</html>
